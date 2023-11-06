@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Ball {
+	
 	public static void main(String[] args) {
 		int[] basket;
 		int count = 0;
