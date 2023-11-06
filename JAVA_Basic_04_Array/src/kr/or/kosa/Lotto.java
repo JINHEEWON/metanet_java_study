@@ -1,7 +1,12 @@
 package kr.or.kosa;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class Lotto {
 	private int[] numbers;
+	private Scanner scanner; //생성자 초기화 -> 원칙
+	private Random r;
 	
 	public Lotto() {
 		this.numbers = new int[6];
