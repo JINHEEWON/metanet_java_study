@@ -115,7 +115,6 @@ public class Ex11_Inherit_Point {
 	buyer2.Buy(new Audio2());
 	buyer2.Buy(new Audio2());
 	buyer2.Buy(new Audio2());
-	buyer2.Buy(new Audio2());
 	buyer2.summary();
 	
 	
