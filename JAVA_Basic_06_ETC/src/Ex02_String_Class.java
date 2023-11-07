@@ -3,13 +3,13 @@ import java.util.Scanner;
 public class Ex02_String_Class {
 	
 	public static boolean checkLength(String number) {
-		return (number.length() == 15) ? true : false;
+		return (number.length() == 14) ? true : false;
 	}
 		
 	public static boolean boolcheckNumber(String number) {
 		int num = (int)number.charAt(7) - '0';
 		boolean result = true;
-		if(num <1 || num > 4) {
+		if(num < 1 || num > 4) {
 			result = false;
 		}
 		return result;
@@ -32,7 +32,7 @@ public class Ex02_String_Class {
 		do {
 			number = scanner.nextLine();
 			
-		}while((checkLength(number) || boolcheckNumber(number)));
+		}while(!(checkLength(number) && boolcheckNumber(number)));
 			
 		printNumber(number);	
 		
