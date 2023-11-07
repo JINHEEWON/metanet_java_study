@@ -16,15 +16,15 @@
 class Car extends AbClass { }
 class Car implements Ia{ }
 
-둘다 추상자원을 가지고 있다 >> 강제적 구현이 목적 (재정의)
+둘다 추상자원을 가지고 있다 >> *강제적 구현이 목적 (재정의)*
 
 추상클래스 인터페이스 다른점
 3. 추상클래스 (완성부 코드 일부) 그러나 인터페이스는 전체가 미완성 코드(상수 + default 함수)
 3.1 원칙적으로는 클래스는 다중상속 >> 계층적 상속 또는 포함 관계를 ... 
-    그러나 인터페이스는 [다중 구현]이 가능 >> 여러개의 작은 인터페이스 모아 모아 서 ....
-    너무 큰 인터페이스를 만들면 재사용성이 떨어져요 ....
+    그러나 인터페이스는 [다중 구현]이 가능(유일하게) >> 여러개의 작은 인터페이스 모아 모아 서 .... 
+    너무 큰 인터페이스를 만들면 재사용성이 떨어져요 .... 작은 약속을 만드는 것이 좋음
     Ia , Ib , Ic
-    class Test extends Object implements Ia ,Ib ,Ic
+    class Test extends Object implements Ia ,Ib ,Ic -> Object 상속, Ia, Ib, Ic 구현
     Tip)인터페이스와 인터페이스는 서로간 상속이 가능
         작은 약속 >> 상속 >> 큰 약속 
 
@@ -33,7 +33,7 @@ class Car implements Ia{ }
 초급개발자 시선으로
 1. 인터페이스를 [[ 다형성 ]] 입장으로 접근 (인터페이스 모든 타입 부모) ********************
 2. 서로 연관성이 없는 클래스를 하나로 묶어주는 역할 (같은 부모를 가지게 함으로써)
-3. JAVA API 수 많은 인터페이스를 생성해 놓았어여 (사용이라는 것에 관점)
+3. JAVA API 수 많은 인터페이스를 생성해 놓았어여 (사용이라는 것에 관점) -> 대표적 > Collection > List, Set, Map
 4. 인터페이스 (~able) : 날수있는 , 수리할 수 있는 , 
 5. 객체간 연결 고리 (객체간 소통) 다형성
 
@@ -47,20 +47,38 @@ interface
 
 생성방법
 1.상수구현가능
-public static final int VERSION=1 >> int VERSION=1
+[ public static final ] int VERSION=1 >> int VERSION=1   ->   왜..? 왜 public..?
 컴파일러가 알아서 
 
 2.추상함수 
-public abstract void run(); >> void run()
+[ public abstract ] void run(); >> void run()
 
 종류
-interface Aable{ } //아무 자원도 없어요 (같은 가족으로 묶어 줄때)
+interface Aable{ } //아무 자원도 없어요 (같은 가족으로 묶어 줄때)	->    목적: 부모를 만들어서 서로 연관성이 없는 클래스를 묶어줌
 interface Aable{ int NUM=10; }
 interface Aable{void run();}
 
 
 
 */
+
+interface Ia {
+	int AGE = 100;		//public static final
+	String GENDER = "남";
+	//String print() {};
+	String print();		//public abstract
+}
+
+class Test2 implements Ia {
+
+	@Override
+	public String print() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}
+
 public class Ex14_Interface {
 
 	public static void main(String[] args) {
