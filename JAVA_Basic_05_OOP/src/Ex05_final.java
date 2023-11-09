@@ -35,9 +35,9 @@ class Vcard {
 class Vcard2 {
 	final static int NUMBER=100;
 	final String KIND;
-	final int NUM;
+	final int NUM;	//나는 생성되는 객체마다 다른 상수값을 주겠다
 	
-	//Vcard2 {}
+	//Vcard2() {}
 	Vcard2(String kind, int num) {
 		this.KIND = kind;
 		this.NUM = num;
