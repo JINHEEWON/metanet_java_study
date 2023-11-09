@@ -105,6 +105,16 @@ class Circle extends Shape{
 	
 }
 
+/*
+삼각형 클래스를 만드세요
+삼각형은 3개의 점과 색상과 그리고 그리다 기능을 가지고 있다
+hint) Shape , Point 제공 받아서 설계도 작성 하세요
+hint) (x,y) , (x,y) , (x,y)
+default 삼각형을 만들 수 있고  3개의 좌표값을 받아서 그릴 수 있다 
+
+개인별로 풀어 보시고 제가 한 바퀴 돌면서 채점을 해 드릴게요 ^^
+50 , 70 , 100점 으로 나누어 드릴게요 ^^
+*/
 class Triangle extends Shape {
 	Point points[];
 	
@@ -118,6 +128,8 @@ class Triangle extends Shape {
 		this.points[1] = point2;
 		this.points[2] = point3;
 	}
+	//구체화, 특수화
+	//추가적인 기능
 	void draw() {
 		System.out.println("삼각형을 그리다");
 		for(Point p : points) {

@@ -32,19 +32,17 @@ class Vcard {
 
 //설계자 입장에서
 //53 카드 생성시 카드마다 다른 상수값을 가지게 하고 싶다
-
-​class Vcard2 {
+class Vcard2 {
 	final static int NUMBER=100;
 	final String KIND;
-	final int NUM;	//나는 생성되는 객체마다 다른 상수값을 주겠다
+	final int NUM;
 	
-	//Vcard2() {}
+	//Vcard2 {}
 	Vcard2(String kind, int num) {
 		this.KIND = kind;
 		this.NUM = num;
 	}
-
-	@Override
+	
 	public String toString() {
 		return "Vcard2 [KIND=" + KIND + ", NUM=" + NUM + "]";
 	}
