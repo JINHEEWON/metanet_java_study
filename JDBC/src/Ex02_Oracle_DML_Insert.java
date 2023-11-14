@@ -81,7 +81,7 @@ public class Ex02_Oracle_DML_Insert {
 				conn.close();
 			} catch (Exception e2) {
 				// TODO: handle exception
-				e.printStackTrace();
+				e2.printStackTrace();
 			}
 			
 		}
