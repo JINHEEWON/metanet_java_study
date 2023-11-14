@@ -17,7 +17,7 @@ import UTILS.ConnectionHelper;
 //3. 삽입
 //4. 수정
 //5. 삭제
-//6. 문자열 LIKE 검색 (부서이름)
+//6. 문자열 LIKE 검색 (부서이름) 
 public class DeptDao {
 
 	public List<Dept> selectAll() {
