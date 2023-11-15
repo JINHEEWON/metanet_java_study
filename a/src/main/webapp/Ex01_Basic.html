@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<!--적용범위 : 현재 페이지 내에 모든 태그 : 유지보수 고민 -->
+	<style type="text/css">
+			body {background-color: gray;}
+			h3 {color: yellow;}	
+	</style>
+	
+	<!--external-->
+	<link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<!--
+    HTML describes the structure of a Web page<br>
+	2. HTML5 가 웹 표준이다 
+	3. web 브라우져 (소프트웨어) 역할 (해석기) : html , css , javascript , xml , json  해석 ..
+	4. F12 개발자 도구 가지고 놀기 
+
+	1. Front 개발 :  메모장 , 웹브라우져 
+	2. Tool      :  VS 코드 ,  (Live Server > 아파치 > 웹서만 제공 > html, css, javascript 가능<br>
+	3. Front 개발 , Back 개발 : 아파치 톰켓 ( web server + was)  > 이클립스 사용 
+
+	Inline   - by using the style attribute inside HTML elements
+	Internal - by using a <style> element in the <head> section
+	External - by using a <link> element to link to an external CSS file
+-->
+	<h3>inline</h3>
+	<p style="background-color:aqua;">문단태그</p>
+	<h3 style="color:tomato;">나는 토마토(안쪽이 우선)</h3>
+	
+	<h3>외부 파일 참조</h3>
+	<h3> 이미지 서버 : 파일 서버 (AWS s3 서버)</h3>
+	<img src="images/img_forest.jpg">
+	<img src="https://www.baemin.com/_next/static/images/img-bike@2x.png">
+	<h1>외부 css 적용</h1>
+	
+	<!-- Write your comments here -->
+</body>
+</html>
