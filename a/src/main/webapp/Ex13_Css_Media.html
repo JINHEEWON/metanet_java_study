@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		/* 800px 이하의 좁은 화면에서 css 적용되는 요소는 배경색을 tomoto로 */
+		@media(max-width:800px){
+			.small-tomato {background-color: tomato;}
+		}
+		/* 800px 이상의 화면에서 css 적용되는 요소는 배경색을 gray로 */
+		@media(min-width:800px){
+			.large-gray {background-color: gray;}
+		}
+		/* 600px 이하 적용 (max)*: 핸드폰 화면에서는 desktop css 감추기*/
+		@media(max-width:600px){
+			.desktop {display: none;}
+		}
+		/* 1000px 이상 적용 (min): 데스크탑 화면이 되면 핸드폰에서 보였던 ui는 감추어라*/
+		@media(min-width:1000px){
+			.mobile {display: none;}
+		}
+	</style>
+</head>
+<body>
+	<div class="small-tomato">좁은 화면에서 배경색이 토마토</div>
+	<div class="large-gray">넓은 화면에서 배경색이 그레이</div>
+	
+	<ul>
+		<li class="desktop">Desktop 용</li>
+		<li>mobile - desktop</li>
+		<li class="mobile">Mobile 용</li>
+	</ul>
+</body>
+</html>

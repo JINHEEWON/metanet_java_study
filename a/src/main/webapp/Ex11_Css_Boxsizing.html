@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body {margin:0px;}
+	div {
+		margin: 20px;
+		padding: 20px;
+		border: 20px solid gray;
+		width: 500px;
+		
+	}
+	.contentbox {
+		box-sizing: content-box;	/* default */
+	}
+	.borderbox {
+		box-sizing: border-box;		/* 500 width 정의 : 
+										> padding(40) + border(40) + width 420 */
+	}
+</style>
+</head>
+<body>
+	<div class = "contentbox">
+		<p>content-box</p>
+	</div>
+	<div class = "borderbox">
+		<p>border-box</p>
+	</div>
+	<div>
+		<p>default-box</p>
+	</div>
+</body>
+</html>
