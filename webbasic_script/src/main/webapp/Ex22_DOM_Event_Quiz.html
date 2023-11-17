@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!--  
+	a click 이벤트를 동적으로 부여하시고 (addEvent...)
+	다음 >> images/2.jpg   다음 >> images/3.jpg   다음 >> images/4.jpg  다음 >> images/1.jpg
+	이전 >> images/4.jpg   이전 >> images/3.jpg
+	*/
+		
+	-->
+	<h3>DOM 슬라이드</h3>
+	<img src="images/1.jpg" alt="이미지" id="imgs" width="200" height="200">
+	<hr>
+	<a href="#" id="prv">이전</a>||<a href="#" id="next">다음</a>
+</body>
+	<script>
+		//charat으로 바꿔야됨..
+		let index = 0;
+		
+		let prv = document.getElementById("prv");
+		let next = document.getElementById("next");
+		
+		prv.addEventListener("click", prvImg);
+		next.addEventListener("click", nextImg);
+		
+		
+		function prvImg() {
+			let imgs = document.getElementById("imgs");
+			let imgnum = imgs.getAttribute("src").substring(7,8);
+			if(imgnum == 1) {
+				imgnum = 5;
+			}
+			imgs.setAttribute("src", "images/"+(imgnum-1)+".jpg");
+		}
+		
+		function nextImg() {
+			let imgs = document.getElementById("imgs");
+			let imgnum = imgs.getAttribute("src").substring(7,8);
+			if(imgnum == 4) {
+				imgnum = 0;
+			}
+			imgs.setAttribute("src", "images/"+(imgnum+1)+".jpg");
+		}
+	</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		window.onload = function() {
+			let btnobj = document.getElementById('btngetdata');
+			//<input type="button" onclick >> bad한 코드
+			btnobj.onclick = function() {	//객체.이벤트명 = 익명함수
+				let txtmsg = document.getElementById('txtmessage');
+				let str="";
+				str += "ID :" + txtmsg.getAttribute('id');
+				str += " value :" + txtmsg.getAttribute('value');
+				console.log(str);
+			}
+			
+			document.getElementById('btncreate').onclick = function() {
+				let textbox = document.createElement("input");
+				textbox.setAttribute("type", "text");
+				textbox.setAttribute("id", "txtbox");
+				textbox.setAttribute("value", "홍길동");
+				document.body.appendChild(textbox);
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="txtmessage" value="hello">
+	<input type="button" id="btngetdata" value="getinfo">
+	<hr>
+	<input type="button" id="btncreate" value="동적생성">
+</body>
+</html>

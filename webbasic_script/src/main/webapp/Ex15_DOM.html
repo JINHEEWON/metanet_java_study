@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		/*
+		Finding HTML elements by id
+		Finding HTML elements by tag name
+		Finding HTML elements by class name
+		Finding HTML elements by CSS selectors
+		Finding HTML elements by HTML object collections
+		
+		document.getElementById(id)	Find an element by element id
+		document.getElementsByTagName(name)	Find elements by tag name
+		document.getElementsByClassName(name)	Find elements by class name
+
+		onload 이벤트가 발생하는 시점 : body 태그 안에 있는 모든 요소가 브라우저에 메모리 loading 후에 
+		>> DOM 생성 
+		
+		1. <body onload="call()">
+		2. window.onload = call();
+		3. window.onload = function(){} //이벤트에 동작되는 함수 - 핸들러 함수
+		
+		*/
+		
+		window.onload = function() {
+			let out = "";
+			out+="<ul>"
+				out+="<li>script</li>";
+				out+="<li>ajax</li>";
+			out+="</ul>"
+			
+			document.body.innerHTML = out;
+			
+			//DOM >> 동적 >> 기존에 없던 것을 추가, 있던 것을 삭제, 있는 것을 변경
+			const header = document.createElement("h1");
+			//<h1></h1>
+			const textnode = document.createTextNode("hello");
+			
+			header.appendChild(textnode);
+			//<h1>hello</h1>
+			
+			document.body.appendChild(header);
+			
+			//
+			let img = document.createElement("img");
+			img.setAttribute("src", "http://192.168.73.3/Metanet_edu/java/Labs/WebBasic_Script/src/main/webapp/images/w3schools.jpg");
+			img.setAttribute("width", "150");
+			img.setAttribute("height", "150");
+			
+			document.body.appendChild(img);
+		}
+	</script>
+</head>
+<body>
+	HELLO WORLD
+</body>
+</html>
