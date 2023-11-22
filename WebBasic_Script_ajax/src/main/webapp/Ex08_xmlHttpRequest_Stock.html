@@ -1,0 +1,180 @@
+ 
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Insert title here</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+   <script type="text/javascript">
+   let httpReq=null;
+   
+   function getInstance(){
+        if(window.XMLHttpRequest){
+           httpReq = new XMLHttpRequest(); //현재 브라우져 XMLHttpRequest 내장
+        }else if(window.ActiveXObject){ //IE6 이하   //지금 필요없어요
+           httpReq = new ActiveXObject("Msxml2.XMLHTTP");
+        }else{
+          throw new Error("AJAX 지원하지 않습니다"); 
+        }
+      return httpReq;  
+   }
+   function handlerStateChange(){
+       if(httpReq.readyState == 4){ //1. 서버에서 응답이 왔다면
+          if(httpReq.status >= 200 && httpReq.status < 300){
+             //개발자 마음 (가공)
+             //서버가 비동기로 클라이언트 줄 수 있는  Data
+             //1. Text (text, html , script , css , json)  >> responseText
+             //2. xml                                      >> responseXML
+             
+             console.log(httpReq.responseText);
+             TempTxt = httpReq.responseText;
+            TempJson = JSON.parse(TempTxt);
+            console.log(TempJson.response.body.items.item[0]);
+             
+             const table = document.getElementById("main");
+             table.innerHTML="";
+             for(let data of TempJson.response.body.items.item) {
+                     const tr = document.createElement("div");
+                     tr.setAttribute("class", "row");
+                     
+                     const basDt = document.createElement("div");      //일자
+                    basDt.setAttribute("class", "col");
+                    basDt.setAttribute("style","background-color:lavender;");
+                    basDt.innerHTML = data.basDt;
+                  
+                    
+                    const itmsnm = document.createElement("div");      //종목명
+                    itmsnm.setAttribute("class", "col");
+                    itmsnm.setAttribute("style","background-color:lavender;");
+                    itmsnm.innerHTML = data.itmsNm;
+                    
+                    const vs = document.createElement("div");      //대비
+                    vs.setAttribute("class", "col");
+                    vs.setAttribute("style","background-color:lavender;");
+                    vs.innerHTML = data.vs;
+                    
+                    const fltrt = document.createElement("div");      //등락률
+                    fltrt.setAttribute("class", "col");
+                    fltrt.setAttribute("style","background-color:lavender;");
+                    fltrt.innerHTML = data.fltRt;
+                    
+                    const mkp = document.createElement("div");      //시가
+                    mkp.setAttribute("class", "col");
+                    mkp.setAttribute("style","background-color:lavender;");
+                    mkp.innerHTML = data.mkp;
+                    
+                    const hipr = document.createElement("div");      //고가
+                    hipr.setAttribute("class", "col");
+                    hipr.setAttribute("style","background-color:lavender;");
+                    hipr.innerHTML = data.hipr;
+                    
+                    const lopr = document.createElement("div");      //저가
+                    lopr.setAttribute("class", "col");
+                    lopr.setAttribute("style","background-color:lavender;");
+                    lopr.innerHTML = data.lopr;
+                    
+                    const trqu = document.createElement("div");      //거래량
+                    trqu.setAttribute("class", "col");
+                    trqu.setAttribute("style","background-color:lavender;");
+                    trqu.innerHTML = data.trqu;
+                    
+                    const mrkttotamt= document.createElement("div");      //시가총액
+                    mrkttotamt.setAttribute("class", "col");
+                    mrkttotamt.setAttribute("style","background-color:lavender;");
+                    mrkttotamt.innerHTML = data.mrktTotAmt;
+                   
+                      tr.appendChild(basDt);
+                      tr.appendChild(itmsnm);
+                      tr.appendChild(vs);
+                      tr.appendChild(fltrt);
+                      tr.appendChild(mkp);
+                      tr.appendChild(hipr);
+                      tr.appendChild(lopr);
+                      tr.appendChild(trqu);
+                      tr.appendChild(mrkttotamt);
+                      
+                    table.append(tr);
+              }      
+             
+             //
+          }else{
+             alert("status Text : " + httpReq.status);
+          }
+       }
+   }
+   function sendData(){
+      httpReq = getInstance();
+      httpReq.onreadystatechange = handlerStateChange;  // x >> ()
+      
+      let begindate= document.getElementById("begindate").value;
+      let enddate= document.getElementById("enddate").value;
+      let mrk= document.getElementById("ctg").value;
+      let name= document.getElementById("name").value;
+      
+      httpReq.open("GET","https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=fvUXmi5TWE1iq6hOd0GQuu8GElv07ptX2lJOC5NDeTeL2DMYmEQPBaiefIZeH3wGTPOsrjb4qr9XU2MgukRUJg%3D%3D&resultType=json&numOfRows=10&beginbasDt="+begindate+"&endBasDt="+enddate+"&mrktCls="+mrk+"&likeItmsNm="+name); //form 태그 구성
+      httpReq.send(); // form submit 버튼 클릭
+   }
+   </script>
+   <style>
+      body {
+         text-align: center;
+         margin: 10%;
+      }
+      
+   </style>
+</head>
+<body>
+   <h3>주식시세</h3><br>
+   <div class="container mt-5">
+     <div class="row">
+     <div class="col">
+      <label for="ctg" class="form-label">시장구분</label>
+       <select name="ctg" id="ctg" class="form-control" onchange="sendData()">
+         <option value="KOSDAQ">KOSDAQ</option>
+         <option value="KOSPI">KOSPI</option>
+         <option value="KONEX">KONEX</option>
+      </select>
+     </div>
+     
+     <div class="col">
+       <label for="name" class="form-label">종목명</label>
+       <input type="text" class="form-control" id="name" placeholder="홀딩스" >
+     </div>
+
+     <div class="col">
+      <label for="begindate" class="form-label">시작</label>
+       <input type="text" class="form-control" id="begindate" placeholder="20231101" >
+     </div>
+     <div class="col">
+       <label for="enddate" class="form-label">끝</label>
+       <input type="text" class="form-control" id="enddate" placeholder="20231121" >
+     </div>
+     <div class="col">
+      <label for="enddate" class="form-label"></label>
+       <button class="form-control" onclick="sendData()">검색</button>
+     </div>
+   </div>
+   <br>
+   <div id = "title">
+      <div class="row attribute" style="padding-bottom: 20px; padding-top: 20px; background-color: orange;">
+          <div class="col">일자</div>
+          <div class="col">종목명</div>
+          <div class="col">대비</div>
+          <div class="col">등락률</div>
+          <div class="col">시가</div>
+          <div class="col">고가</div>
+          <div class="col">저가</div>
+          <div class="col">거래량</div>
+          <div class="col">시가총액</div>
+        </div>
+     </div>
+    <div id = "main" style="margin-top: 20px;">
+      </div>
+   </div>
+   
+</body>
+</html>

@@ -97,6 +97,43 @@
 		 }
 		 myFunc();	//함수호출
 		 
+		 let txt ="";
+		 const numbers=[45, 52, 25, 1, 11];
+		 //Array.forEach(function(value,index,array){})
+		 function myFunc2(value, index, array) {
+			 txt = "(" + value + ")" + "[" + index + "]" + "[" + array + "]";
+			 console.log(txt);
+		 }
+		 numbers.forEach(myFunc2);
+		 
+		 const number2 = [65, 44, 12, 4];
+		 const newArray = number2.map(myFunc3);	//배열을 리턴 (조작된 배열)
+		 
+		 function myFunc3(value, index, array) {
+			 return value * 10 + index;
+		 }
+		 console.log(newArray);
+		 
+		 
+		 //응용하기
+		 let evens=[2,4,6,8];
+		 //let odds = evens.map(function(value){return value+1});
+		 //화살표 함수 사용하기
+		 let odds = evens.map(value => value+1);
+		 console.log(odds);
+		 
+		 //let nums = evens.map(function(value,index){return value+index});
+		 let nums = evens.map((value,index) => value+index);
+		 console.log(nums);
+		 
+		 let arr=[];
+		 evens.forEach(
+			 value => {
+				 if(value % 2 == 0) {
+					 arr.push(value);
+				 }
+			 }
+		 );
 		 
 	</script>
 </html>

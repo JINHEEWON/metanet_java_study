@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<body style="text-align: right">
+
+<h1>JavaScript Functions</h1>
+<h2>Callback Functions</h2>
+<p id="demo"></p>
+
+<script>
+// Create an Array
+const myNumbers = [4, 1, -20, -7, 5, 9, -6];
+
+// Call removeNeg with a Callback
+const posNumbers = removeNeg(myNumbers, (x) => x >= 0);
+
+// Display Result
+document.getElementById("demo").innerHTML = posNumbers;
+
+// Remove negative numbers
+function removeNeg(numbers, callback) {
+  const myArray = [];
+  for (const x of numbers) {
+    if (callback(x)) {  // �⑥닔 �ъ슜 .....
+      myArray.push(x);
+    }
+  }
+  return myArray;
+}
+/*  
+肄쒕갚�� �뺣쭚 鍮쏆쓣 諛쒗븯�� 怨녹� �섎굹�� �⑥닔媛� �ㅻⅨ �⑥닔瑜� 湲곕떎�ㅼ빞 �섎뒗 鍮꾨룞湲� �⑥닔�낅땲��  
+Where callbacks really shine are in asynchronous functions, 
+where one function has to wait for another function (like waiting for a file to load).
+*/
+</script>
+
+</body>
+</html>
