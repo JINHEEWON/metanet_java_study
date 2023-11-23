@@ -57,6 +57,16 @@ public class MemoServlet extends HttpServlet {
     	   
     	   int n = pstmt.executeUpdate();
     	   
+    	   /*try {
+			
+    	   } catch (Exception e) {
+				out.print("<script>");
+	 		    out.print("alert('등록실패..');");
+	 		    out.print("location.href='memo.html';");
+	 		    out.print("</script>");
+    	   }
+    	   */
+    	   
     	   if(n>0){
     		    out.print("<script>");
     	     	out.print("alert('등록성공..');");
@@ -64,7 +74,7 @@ public class MemoServlet extends HttpServlet {
     	     	//주소창에 입력 enter (F5) 요청
     	     	//localhost:8090/WebServlet_3/MemoList
     	    out.print("</script>");
-    	   }else{ //insert 에서 현실적으로 경우 ...
+    	   }else{ //insert 에서 현실적으로 경우 ... 의미가 없다 ...
     		    out.print("<script>");
     		    out.print("alert('등록실패..');");
     		    out.print("location.href='memo.html';");
