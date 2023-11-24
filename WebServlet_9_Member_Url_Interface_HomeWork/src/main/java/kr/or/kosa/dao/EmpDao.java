@@ -97,6 +97,42 @@ public class EmpDao {
 		return empdto;
 	}
 	
+	//특정사원 검색(사원번호)
+		public EmpDto selectEmpByEmpno(int empno) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			EmpDto empdto = new EmpDto();
+			try {
+				  conn = ConnectionHelper.getConnection("oracle");
+				  String sql="select * from emp where empno=?";
+				  pstmt = conn.prepareStatement(sql);
+				  
+				  pstmt.setInt(1, empno);
+				  
+				  rs = pstmt.executeQuery();
+				  
+				  while(rs.next()) {
+					  empdto.setEmpno(rs.getInt("empno"));
+					  empdto.setEname(rs.getString("ename"));
+					  empdto.setJob(rs.getString("job"));
+					  empdto.setMgr(rs.getInt("mgr"));
+					  empdto.setHiredate(rs.getString("hiredate"));
+					  empdto.setSal(rs.getInt("sal"));
+					  empdto.setComm(rs.getInt("comm"));
+					  empdto.setDeptno(rs.getInt("deptno"));
+					}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}finally {
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn); //반환
+			}
+			return empdto;
+		}
+	
 	//사원 검색(이름)
 	public List<EmpDto> selectEmpByName(String ename) {
 		Connection conn = null;
